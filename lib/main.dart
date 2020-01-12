@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 // ContainerDemo 容器
 // ImagesDemo 图片
 // ListViewDemo
-void main() => runApp(ListViewDemo());
+// ListViewDemo2
+// ListViewDemo3
+
+// void main() => runApp(ListViewDemo2());
+void main() => runApp(ListViewDemo3(
+  // items: List(1000) // 指定数据长度的List
+  // items: [1, 2, 3, 4, 5] // 常量List
+  // items: List<String>() // 指定数据类型的List
+  items: new List<String>.generate(1000, (index) => 'Item $index')
+));
 
 class ContainerDemo extends StatelessWidget {
   @override
@@ -108,5 +117,80 @@ class ListViewDemo extends StatelessWidget {
       ),
     );
   }
+}
+
+class ListViewDemo2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'ListView小样',
+      home: Scaffold(
+        appBar: new AppBar(
+          title: new Text('ListViewDemo'),
+        ),
+        body: new Container(
+          margin: const EdgeInsets.all(20.0),
+          color: Colors.grey,
+          height: 200.0,
+          child: MyList()
+          ),
+        )
+    );
+  }
+}
+
+  class ListViewDemo3 extends StatelessWidget {
+
+    final List<String> items;
+    ListViewDemo3({ Key key, @required this.items }):super(key: key);
+
+    @override
+    Widget build(BuildContext context) {
+      return MaterialApp(
+        title: 'ListViewDemo3',
+        home: Scaffold(
+          appBar: new AppBar(title: new Text('ListViewDemo3')),
+          body: new ListView.builder(
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              return new ListTile(
+                title: new Text('${items[index]}'),
+              );
+            },
+          )
+        ),
+      );
+    }
+  }
+
+class MyList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      children: <Widget>[
+        new Container(
+          width: 180.0,
+          color: Colors.deepOrange,
+        ),
+        new Container(
+          width: 180.0,
+          color: Colors.lightBlue,
+        ),
+        new Container(
+          width: 180.0,
+          color: Colors.lightGreen,
+        ),
+        new Container(
+          width: 180.0,
+          color: Colors.deepPurple,
+        ),
+        new Container(
+          width: 180.0,
+          color: Colors.black38,
+        ),
+      ]);
+  }
+
 }
 
