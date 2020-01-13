@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 // ListViewDemo2
 // ListViewDemo3
 
-// void main() => runApp(ListViewDemo2());
-void main() => runApp(ListViewDemo3(
-  // items: List(1000) // 指定数据长度的List
-  // items: [1, 2, 3, 4, 5] // 常量List
-  // items: List<String>() // 指定数据类型的List
-  items: new List<String>.generate(1000, (index) => 'Item $index')
-));
+void main() => runApp(GridViewDemo2());
+// void main() => runApp(ListViewDemo3(
+//   // items: List(1000) // 指定数据长度的List
+//   // items: [1, 2, 3, 4, 5] // 常量List
+//   // items: List<String>() // 指定数据类型的List
+//   items: new List<String>.generate(1000, (index) => 'Item $index')
+// ));
 
 class ContainerDemo extends StatelessWidget {
   @override
@@ -139,29 +139,88 @@ class ListViewDemo2 extends StatelessWidget {
   }
 }
 
-  class ListViewDemo3 extends StatelessWidget {
-
-    final List<String> items;
-    ListViewDemo3({ Key key, @required this.items }):super(key: key);
-
-    @override
-    Widget build(BuildContext context) {
-      return MaterialApp(
-        title: 'ListViewDemo3',
-        home: Scaffold(
-          appBar: new AppBar(title: new Text('ListViewDemo3')),
-          body: new ListView.builder(
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              return new ListTile(
-                title: new Text('${items[index]}'),
-              );
-            },
-          )
-        ),
-      );
-    }
+class ListViewDemo3 extends StatelessWidget {
+  final List<String> items;
+  ListViewDemo3({ Key key, @required this.items }):super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'ListViewDemo3',
+      home: Scaffold(
+        appBar: new AppBar(title: new Text('ListViewDemo3')),
+        body: new ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return new ListTile(
+              title: new Text('${items[index]}'),
+            );
+          },
+        )
+      ),
+    );
   }
+}
+
+class GridViewDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'GridViewDemo',
+      home: Scaffold(
+        appBar: new AppBar(
+          title: new Text('GridViewDemo',)
+        ),
+        body: GridView.count(
+          padding: EdgeInsets.all(20.0),
+          crossAxisSpacing: 10.0,
+          crossAxisCount: 3,
+          children: <Widget>[
+            const Text('苦其心志'),
+            const Text('劳其筋骨'),
+            const Text('饿其体肤'),
+            const Text('空乏其身'),
+            const Text('行拂乱其所为'),
+            const Text('所以动心忍性'),
+          ],
+        ),
+      )
+    );
+  }
+}
+
+class GridViewDemo2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'GridViewDemo',
+      home: Scaffold(
+        appBar: new AppBar(
+          title: new Text('GridViewDemo',)
+        ),
+        body: GridView(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, // x轴数据条目数量(多少列)
+            mainAxisSpacing: 2.0, // 项目之间上下间隙
+            crossAxisSpacing: 3.0, // 项目之间左右间隙
+            childAspectRatio: 0.7 // 缩放比例（width: height）
+          ),
+          children: <Widget>[
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-2001051005490-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-200105100U90-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-2001061055440-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-200106132H20-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-20010G00P70-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-2001111G6430-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-20010Q00F60-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/20/4-2001042005380-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/19/4-1912311456080-L.jpg', fit: BoxFit.cover),
+            new Image.network('https://imgs.kabc688.com/0701pic/allimg/16/4_02141932205M7.jpg', fit: BoxFit.cover),
+          ],
+        )
+      )
+    );
+  }
+}
 
 class MyList extends StatelessWidget {
   @override
