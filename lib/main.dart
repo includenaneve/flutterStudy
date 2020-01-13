@@ -4,8 +4,14 @@ import 'package:flutter/material.dart';
 // ListViewDemo
 // ListViewDemo2
 // ListViewDemo3
+// GridViewDemo
+// GridViewDemo2
+// RowWidgetDemo
+// ColumnWidget
+// ColumnDemo
+// PositionDemo
 
-void main() => runApp(GridViewDemo2());
+void main() => runApp(PositionDemo());
 // void main() => runApp(ListViewDemo3(
 //   // items: List(1000) // 指定数据长度的List
 //   // items: [1, 2, 3, 4, 5] // 常量List
@@ -216,6 +222,139 @@ class GridViewDemo2 extends StatelessWidget {
             new Image.network('https://imgs.kabc688.com/0701pic/allimg/19/4-1912311456080-L.jpg', fit: BoxFit.cover),
             new Image.network('https://imgs.kabc688.com/0701pic/allimg/16/4_02141932205M7.jpg', fit: BoxFit.cover),
           ],
+        )
+      )
+    );
+  }
+}
+
+class RowWidgetDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'RowWidgetDemo',
+      home: Scaffold(
+        appBar: new AppBar(title: new Text('RowWidgetDemo')),
+        body: new Row(
+          children: <Widget>[
+            Expanded(
+              child: new RaisedButton(
+                onPressed: () {},
+                color: Colors.redAccent,
+                child: new Text('红色按钮'),
+              ),
+            ),
+            Expanded(
+              child: new RaisedButton(
+                onPressed: () {},
+                color: Colors.lightBlue,
+                child: new Text('蓝色按钮'),
+              ),
+            ),
+            new RaisedButton(
+              onPressed: () {},
+              color: Colors.greenAccent,
+              child: new Text('绿色按钮'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ColumnWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '垂直布局',
+      home: Scaffold(
+        appBar: new AppBar(title: new Text('垂直布局'),),
+        body: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('我有一只小毛驴我从来也不骑'),
+              Text('有一天我心绪来潮骑着去赶集'),
+              Text('顶顶顶顶'),
+              Text('会当凌绝顶，一览众山小'),
+            ],
+          )
+        ),
+      )
+    );
+  }
+}
+
+class ColumnDemo extends StatelessWidget {
+  var stack = new Stack(
+    alignment: const FractionalOffset(0.5, 0.8),
+    children: <Widget>[
+      new CircleAvatar(
+        backgroundImage: new NetworkImage('https://imgs.kabc688.com/0701pic/allimg/20/4-2001051005490-L.jpg'),
+        radius: 100.0,
+      ),
+      new Container(
+        decoration: new BoxDecoration(
+          color: Colors.black87,
+        ),
+        padding: EdgeInsets.all(5.0),
+        child: Text('辛弃疾', style: TextStyle(
+          color: Colors.white,
+          fontSize: 30.0
+        ),),
+      )
+    ],
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '垂直布局2',
+      home: Scaffold(
+        appBar: new AppBar(
+          title: new Text('垂直布局2'),
+        ),
+        body: Center(
+          child: stack,
+        )
+      )
+    );
+  }
+}
+
+class PositionDemo extends StatelessWidget {
+  var stack = new Stack(
+    alignment: const FractionalOffset(0.5, 0.8),
+    children: <Widget>[
+      new CircleAvatar(
+        backgroundImage: new NetworkImage('https://imgs.kabc688.com/0701pic/allimg/20/4-2001051005490-L.jpg'),
+        radius: 100.0,
+      ),
+      new Positioned(
+        top: 10.0,
+        left: 10.0,
+        child: new Text('飘花电影网'),
+      ),
+      new Positioned(
+        bottom: 10.0,
+        right: 10.0,
+        child: new Text('辛弃疾'),
+      ),
+    ],
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '垂直布局2',
+      home: Scaffold(
+        appBar: new AppBar(
+          title: new Text('垂直布局2'),
+        ),
+        body: Center(
+          child: stack,
         )
       )
     );
