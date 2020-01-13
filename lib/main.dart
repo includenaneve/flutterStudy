@@ -10,8 +10,9 @@ import 'package:flutter/material.dart';
 // ColumnWidget
 // ColumnDemo
 // PositionDemo
+// CardDemo
 
-void main() => runApp(PositionDemo());
+void main() => runApp(CardDemo());
 // void main() => runApp(ListViewDemo3(
 //   // items: List(1000) // 指定数据长度的List
 //   // items: [1, 2, 3, 4, 5] // 常量List
@@ -354,13 +355,52 @@ class PositionDemo extends StatelessWidget {
           title: new Text('垂直布局2'),
         ),
         body: Center(
-          child: stack,
+          child: stack, 
         )
       )
     );
   }
 }
 
+class CardDemo extends StatelessWidget {
+
+  var card = new Card(
+    margin: EdgeInsets.all(10.0),
+    child: Column(
+      children: <Widget>[
+        ListTile(
+          title: Text('上海市宝山区xxx科技', style: TextStyle(fontWeight: FontWeight.w500),),
+          subtitle: Text('Gatsby：13099998888'),
+          leading: new Icon(Icons.account_box),
+        ),
+        new Divider(),
+        ListTile(
+          title: Text('北京市海定区宝石镇', style: TextStyle(fontWeight: FontWeight.w500),),
+          subtitle: Text('Penguin：17811112222'),
+          leading: new Icon(Icons.account_box),
+        ),
+        new Divider(),
+        ListTile(
+          title: Text('广东省广州市白云区', style: TextStyle(fontWeight: FontWeight.w500),),
+          subtitle: Text('天才：16677778888'),
+          leading: new Icon(Icons.account_box),
+        ),
+        new Divider(),
+      ],
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'CardDemo',
+      home: Scaffold(
+        appBar: new AppBar(),
+        body: card,
+      ),
+    );
+  }
+}
 class MyList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
