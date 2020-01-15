@@ -12,13 +12,15 @@ import 'package:flutter/material.dart';
 // PositionDemo
 // CardDemo
 
-void main() => runApp(CardDemo());
-// void main() => runApp(ListViewDemo3(
-//   // items: List(1000) // 指定数据长度的List
-//   // items: [1, 2, 3, 4, 5] // 常量List
-//   // items: List<String>() // 指定数据类型的List
-//   items: new List<String>.generate(1000, (index) => 'Item $index')
-// ));
+// 打包命令 keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+
+// void main() => runApp(CardDemo());
+void main() => runApp(ListViewDemo3(
+  // items: List(1000) // 指定数据长度的List
+  // items: [1, 2, 3, 4, 5] // 常量List
+  // items: List<String>() // 指定数据类型的List
+  items: new List<String>.generate(1000, (index) => 'Item $index')
+));
 
 class ContainerDemo extends StatelessWidget {
   @override
